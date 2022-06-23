@@ -10,7 +10,7 @@ const app = express();
 // route
 app.get('/', async (req, res) => {
   res.send('Welcome to this server');
-})
+});
 
 // ERROR MIDDLEWARE
 app.use(async(req, res, next) => {
@@ -18,7 +18,7 @@ app.use(async(req, res, next) => {
   // error.status = 404;
   // next(error);
   next(httpError.NotFound());
-})
+});
 app.use(async(err, req, res, next) => {
   res.status(err.status || 500);
   res.send({
@@ -26,7 +26,7 @@ app.use(async(err, req, res, next) => {
       status: err.status || 500,
       message: err.message
     }
-  })
+  });
 });
 
 // PORT AND HOSTNAME
